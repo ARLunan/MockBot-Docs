@@ -1,2 +1,2 @@
 # MockBot-Docs
-Repository for Documents support the Create1 Base of the MockBot project Described in the MockBook
+Repository for Documents supporting the iRobot Roomba 500/AutonomyLabs Create1 Base of the MockBot project Described in the MockBook
