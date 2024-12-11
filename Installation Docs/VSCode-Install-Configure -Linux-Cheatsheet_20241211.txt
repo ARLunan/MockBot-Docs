@@ -1,0 +1,116 @@
+VSCode-Install-Configure-Linux-Cheatsheet_20241211.txt
+Author: arlunan@ieee.org
+
+This document is posted in Documents folder on the relevant Mockbots Github. 
+For Mockbot Create1: MockBots-Docs https://github.com/ARLunan/MockBot-Docs
+MockBot-Robot Create1 Repository: https://github.com/ARLunan/MockBotC1-Robot
+
+Follow these text Tutorials here or the Video Tutorials further down this document. Then explore Remote Development and Git 
+____________________________________________________________________________________
+Tutorial: Get started with Visual Studio Code
+https://code.visualstudio.com/docs/getstarted/getting-started
+Prerequisites: Download and Install Visual Studio Code https://code.visualstudio.com/download. Select .deb x64 for an Intel Machine or Arm64 For MAC M1 VM or Raspberry Pi-probably not a good idea !
+
+Visual Studio Code on Linux https://code.visualstudio.com/docs/setup/linux
+Using Downloaded .deb file in an open Terminal: $ sudo apt install ./<file>.deb
+Disregard "Manual Installation"
+
+Go back Open a folder in VSCode https://code.visualstudio.com/docs/getstarted/getting-started
+
+Explore the User Interface, Configure VS Code Settings, Write Some Code, Use Source Control, Install a language Extension (i.e. Python and C/C++
+______________________________________________________________________________________
+Getting started with ROS 2 Extensions - Go to "Remote-SSH" section
+https://marketplace.visualstudio.com/items?itemName=ms-iot.vscode-ros
+Install Pre-release version
+3D Viewer, C/C++, Print, Pylance, Python, Remote-SSH, Remote-SSH: Editing Configuration Files, Remote Explorer, GitHub Pull Request, Markdownlint 
+
+______________________________________________________________________________________
+Microsoft Docs Install SSH Remote Extensions
+https://code.visualstudio.com/docs/setup/linux
+https://code.visualstudio.com/docs/remote/remote-overview
+https://code.visualstudio.com/docs/remote/ssh
+https://code.visualstudio.com/docs/remote/ssh-tutorial
+______________________________________________________________________________________
+Video Tutorials
+Microsoft
+https://code.visualstudio.com/docs/setup/linux
+
+Polyhobbyist Visual Studio Code ROS Extension - Season 1 Episode 0 - Introduction - Disregard references to Windows and Sparkfun Robot
+https://www.youtube.com/watch?v=PBbEhRf8QjE&list=PL2dJBq8ig-vihvDVw-D5zAYOArTMIX0FA
+
+Visual Studio Code ROS Extension - Season 1 Episode 2 - Installing on Linux
+Developing & Debugging ROS 2 Packages https://youtu.be/-NaEPoIg2Ds
+
+Visual Studio Code ROS Extension - Season 1 Episode 4 - Using with ROS2
+Configuring & Running Remote Extension https://www.youtube.com/watch?v=k2TLdXHjVsU
+
+Visual Studio Code ROS Extension - Season 1 Episode 7 - Using over ssh
+https://www.youtube.com/watch?v=teA20AjBlG8
+
+________________________________________________________________________________________________________
+Detailed steps to Install Remote Development over SSH (From Ubuntu Desktop to Raspberry Pi Host OR MAC to Raspberry Pi)
+https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.vscode-remote-extensionpack
+https://code.visualstudio.com/docs/remote/ssh-tutorial
+
+Remote Development extension task
+
+Configure Private-Public Keys to enable Local Desktop Machine to connect by ssh to the Remote SSH Host on the Raspberry Pi. Use the same id_ed25519 (private) and id_ed25519.pub for MAC ) 
+
+https://code.visualstudio.com/docs/remote/troubleshooting Connecting to your MACOS or Linux Machine
+
+SSH Tips to Configure key based authentication
+Quick Start: Using SSH Keys located in ~/.ssh/
+
+ssh-keygen -t ed25519 -b 4096
+chmod 400 ~/.ssh/id_ed25519
+
+export USER_AT_HOST="your-user-name-on-host@hostname"
+export PUBKEYPATH="$HOME/.ssh/id_ed25519.pub"
+
+ssh-copy-id -i "$PUBKEYPATH" "$USER_AT_HOST"
+
+Connect Local VSCode to Remote Host
+From Terminal, ssh user@hostname (e.g ubuntu@rp4-ub22h-mt.local)
+
+From far left, Remote-SSH commands (Blue ><)
+	Remote SSH:Connect to Host > Select user@hostname.local and Confirm to Continue0.0
+New Window should open on the Local Desktop Machine
+
+_____________________________________________________________________________________
+Git in VS Code
+Using Git Source Control in VSCode
+
+Video Tutorial https://code.visualstudio.com/docs/sourcecontrol/overview
+https://code.visualstudio.com/docs/sourcecontrol/intro-to-git
+______________________________________________________________________________________
+Disable tracking files
+
+Configure .gitconfig and .gitignore_global files
+https://community.dynamics.com/blogs/post/?postid=d38b40d3-1533-458d-88ab-4d75535ece2f
+
+In .gitconfig put 
+excludesfile = /Users/Ross/.gitignore_global
+
+add  to .gitignore_global
+.vscode/
+.vscode/*
+**/.vscode/
+log/
+log/*
+
+OR if applicable, seem the case for my & MAC Linux configurations, 
+.alpackages
+*.app
+
+For an existing install, remove tracked files from the repository index
+git rm -r .vscode
+
+OR if applicable, seems the case for my Linux configurations, 
+git rm -r .alpackages
+got rm -r .*.app
+
+
+
+
+
+
