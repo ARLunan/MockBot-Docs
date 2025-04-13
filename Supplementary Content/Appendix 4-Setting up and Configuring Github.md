@@ -18,27 +18,26 @@ The “**Github**” a “**Remote**” repository, stores documents, code and o
 
 ####Getting Started with your Github account
 
-Navigate to https://github.com/ to Create an Account to configure a user name and password (following the prompts). This will enable you to log into github.com and view your personal github.
-            
-          As described below, it is suggested you configure a “Personal Access Token(classic)” that will facilitate various actions during the code development process by allowing users access to various resources in the Remote Robot and Local Desktop Machines “Command Line Terminal”. (Disregard the other security methods, for the purpose of this project). 
+Navigate to https://github.com/ to Create an Account to configure a user name and password (following the prompts). This will enable you to log into github.com and view your personal github.  
+
+As described below, it is suggested you configure a “Personal Access Token(classic)” that will facilitate various actions during the code development process by allowing users access to various resources in the Remote Robot and Local Desktop Machines “Command Line Terminal”. (Disregard the other security methods, for the purpose of this project). 
 https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens          
 
 Suggest Install the “command line” “git” on your Linux Desktop Workstation and Robot Raspberry Pi
 
 Install on Linux, following installing Git from Default Packages and Setting up Git
-https://www.digitalocean.com/community/tutorials/how-to-install-git-on-ubuntu 
-
-$ sudo apt-get update  
-$ sudo apt-get install git  
-$ git --version
+https://www.digitalocean.com/community/tutorials/how-to-install-git-on-ubuntu  
+\$ sudo apt-get update  
+\$ sudo apt-get install git  
+\$ git --version
 
 
 #### Remote Robot Setup
 Set up using the **Remote Robot (SBC)** and **Local Desktop Machine** credentials configured when setting up your Git Account  
 
-$ git config –global user.email “Your email Address”  
-$ git config --global user.name "Your Name"  * This is the Name that appears on the “Overview” page of your personal github.com
-$ git config --global user.email "youremail@domain.com"
+\$ git config –global user.email “Your email Address”  
+\$ git config --global user.name "Your Name"  * This is the Name that appears on the “Overview” page of your personal github.com
+\$ git config --global user.email "youremail@domain.com"
 
 It is necessary to establish **Passwords: Personal access tokens (classic)** are recommended (and mandatory most of the time) are an alternative to using passwords for authentication to GitHub when using the command line, as described here : https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens 
 
@@ -48,18 +47,38 @@ So now enter these values on **email** & **password** request , when you run var
 
 
 Verify the local and global configuration  
-$ git config –list  
+\$ git config –list  
 Or  
-$ git config –global –list
+\$ git config –global –list
 
 So now you can create a **New Repository** with a defined Name in your Remote github.com. Then work on it in your Robot Machine by:  
-$ git clone Repository Name in to your Local Machine workspace
+\$ git clone Repository Name in to your Local Machine workspace
 
 https://docs.github.com/en/repositories/creating-and-managing-repositories/creating-a-new-repository
 
 There are many Git commands to perform operations on and between your Local and Remote Repositories, that are described in the “Pro Git” book and online in docs.github.com. These include init, clone, add, commit, pull, push, branch, checkout. 
 
 From a Terminal, 'git help -a' and 'git help -g' list available subcommands and some concept guides. See 'git help <command>' or 'git help <concept>' to read about a specific subcommand or concept. See 'git help git' for an overview of the system.
+
+### Sqashing Commits 
+After working on a particular repository executing many ongoing "Commits" during your work, an ever increasing number of versions may accumulate in this github. If you do not want to keep some or all previous connits, it is possible "squash" or merge a desired number of commits from the command line of your Desktop workspace. A easy way to see the status of your commits, open your github.com repository and refer to the right side of the header above the list of folders for a commit #, time of last commit and number of Commits.
+
+Follow these steps from your Desktop Linux Terminal:  
+
+\# Pull in the Remote Changes  
+\$ git pull  
+\# Rebase the last 2 (or whatever you desire )commits interactively. It will diplay an error if you select too many commits  
+\$ git rebase -i HEAD~2  (choose a number)  
+
+You will get a list of all previous commits desinating a "pick" with commit number and Edit the left end of each statement 
+squash (s) abcdef commit to keep, except for the top or last commit number   
+s 123456 commit to squash  
+\# Override the Remote branch by executing the following statement, a terminal editor will open, answer "Y" to the prompts and close to save.  
+git push -f origin <branch>    
+
+Check the result by referring to your github.com repository 
+
+Refer for further information: [How to Squash my last N commits](https://stackoverflow.com/questions/5189560/how-do-i-squash-my-last-n-commits-together)  
 
 #### Configuring a .gitignore to prevent tracking certain local files:
 
@@ -76,15 +95,16 @@ CATKIN_IGNORE
 
 
 \# VSCode  
-/.vscode/
-**/.vscode/
-log/
-build/
+/.vscode/  
+/**/.vscode/  
+  
+\# colcon  
+log/  
+build/  
 install/
 
 
 \# .gitignore  
-
 /.gitignore
 
 \# Git .DS_Store  
@@ -92,9 +112,8 @@ install/
 
 
 To remove an existing tracked file:  
-$ git rm -r  -–cached \<filename>  
-
+\$ git rm -r  -–cached \<filename>  
 To update your github:  
-$ git add .  
-$ git commit -m ‘revise .gitignore’  
-$ git push
+\$ git add .  
+\$ git commit -m ‘revise .gitignore’  
+\$ git push
