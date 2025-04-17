@@ -108,7 +108,7 @@ install/
 /.gitignore
 
 \# Git .DS_Store  
-.DS_Store
+**/.DS_Store
 
 
 To remove an existing tracked file:  
