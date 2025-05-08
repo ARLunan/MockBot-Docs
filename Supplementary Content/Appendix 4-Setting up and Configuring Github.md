@@ -60,7 +60,7 @@ There are many Git commands to perform operations on and between your Local and 
 
 From a Terminal, 'git help -a' and 'git help -g' list available subcommands and some concept guides. See 'git help <command>' or 'git help <concept>' to read about a specific subcommand or concept. See 'git help git' for an overview of the system.
 
-### Sqashing Commits 
+### Squashing Commits 
 After working on a particular repository executing many ongoing "Commits" during your work, an ever increasing number of versions may accumulate in this github. If you do not want to keep some or all previous connits, it is possible "squash" or merge a desired number of commits from the command line of your Desktop workspace. A easy way to see the status of your commits, open your github.com repository and refer to the right side of the header above the list of folders for a commit #, time of last commit and number of Commits.
 
 Follow these steps from your Desktop Linux Terminal:  
